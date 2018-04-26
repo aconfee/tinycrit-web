@@ -7,7 +7,7 @@ import axios from 'axios';
 class App extends Component {
 
   componentWillMount = () => {
-    axios.get('http://localhost:3001/dummy')
+    axios.get('http://tinycrit-prod.d2uixwjvjp.us-west-2.elasticbeanstalk.com/dummy')
       .then(response => {
         console.log('Got response:', response.data.message);
       })
