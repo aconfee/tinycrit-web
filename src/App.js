@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import axios from 'axios';
+
 class App extends Component {
+
+  componentWillMount = () => {
+    axios.get('http://localhost:3001/dummy')
+      .then(response => {
+        console.log('Got response:', response.data.message);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
   render() {
     return (
       <div className="App">
