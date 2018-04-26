@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
 import axios from 'axios';
-
-const API_ROOT = 'api.tinycrit.com';
+import { API_ROOT } from './appsettings.js';
 
 class App extends Component {
 
