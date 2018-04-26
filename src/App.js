@@ -4,10 +4,12 @@ import './App.css';
 
 import axios from 'axios';
 
+const API_ROOT = 'api.tinycrit.com';
+
 class App extends Component {
 
   componentWillMount = () => {
-    axios.get('http://tinycrit-prod.d2uixwjvjp.us-west-2.elasticbeanstalk.com/dummy')
+    axios.get(API_ROOT + '/dummy')
       .then(response => {
         console.log('Got response:', response.data.message);
       })
