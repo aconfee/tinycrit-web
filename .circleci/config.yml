@@ -38,6 +38,7 @@ jobs:
         command: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             npm run build
+            mv build dist
       #    else
       #      npm run build-dev
           fi
@@ -45,7 +46,7 @@ jobs:
       -save_cache:
         key: v1-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
         paths:
-          - build
+          - dist
   deploy:
     working_directory: ~/repo
 
@@ -72,7 +73,7 @@ jobs:
           name: Deploy to S3
           command: |
             #if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              aws --region us-west-2 s3 sync build s3://tinycrit.com #--delete
+              aws --region us-west-2 s3 sync dist s3://tinycrit.com #--delete
             #else 
             #  aws --region us-west-2 s3 sync dist s3://dev.tinycrit.com --delete
             #fi
