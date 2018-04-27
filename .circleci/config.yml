@@ -28,25 +28,25 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      # # run tests!
-      # # - run: 
-      # #  name: Run tests
-      # #  command: npm run test
-
+      # run tests!
       # - run: 
-      #   name: Building
-      #   command: |
-      #     if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #       #npm run build
-      #       #mv build dist
-      # #    else
-      # #      npm run build-dev
-      #     fi
-        
-      # -save_cache:
-      #   key: v1-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
-      #   paths:
-      #     - dist
+      #  name: Run tests
+      #  command: npm run test
+
+      - run: 
+          name: Building
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              #npm run build
+              #mv build dist
+        #    else
+        #      npm run build-dev
+            fi
+          
+        -save_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - dist
 
 #   deploy:
 #     working_directory: ~/repo
