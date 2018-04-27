@@ -34,14 +34,14 @@ jobs:
       #  command: npm run test
 
       - run: 
-          name: Building
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+          name: Do the thing
+          command: echo "hello"
+            #if [ "${CIRCLE_BRANCH}" == "master" ]; then
               #npm run build
               #mv build dist
         #    else
         #      npm run build-dev
-            fi
+            #fi
           
         -save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
