@@ -35,18 +35,12 @@ jobs:
 
       - run: 
           name: Do the thing
-          command: echo "hello"
-            #if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              #npm run build
-              #mv build dist
-        #    else
-        #      npm run build-dev
-            #fi
+          command: npm run build
           
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - dist
+            - build
 
 #   deploy:
 #     working_directory: ~/repo
