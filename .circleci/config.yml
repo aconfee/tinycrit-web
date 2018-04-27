@@ -34,7 +34,7 @@ jobs:
       #  command: npm run test
 
       - run: 
-          name: Do the thing
+          name: Building
           command: npm run build
           
       - save_cache:
@@ -42,36 +42,36 @@ jobs:
           paths:
             - build
 
-#   deploy:
-#     working_directory: ~/repo
+  deploy:
+    working_directory: ~/repo
 
-#     docker:
-#       - image: circleci/node:8.11.1-stretch
+    docker:
+      - image: circleci/node:8.11.1-stretch
 
-#     steps: 
-#       - run: ß
-#           name: Show current branch
-#           command: echo${CIRCLE_BRANCH}
+    steps: 
+      - run: ß
+          name: Show current branch
+          command: echo${CIRCLE_BRANCH}
 
-#       - restore_cache:
-#           key: v1-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
 
-#       - run:
-#           name: install AWS CLI
-#           command: sudo apt-get -y -qq install awscli
+      - run:
+          name: install AWS CLI
+          command: sudo apt-get -y -qq install awscli
 
-#       - run: 
-#           name: Setting signature version 4 for s3 request authentication
-#           command: aws configure set default.s3.signature_version s3v4
+      - run: 
+          name: Setting signature version 4 for s3 request authentication
+          command: aws configure set default.s3.signature_version s3v4
 
-#       - run: 
-#           name: Deploy to S3
-#           command: |
-#             #if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#               aws --region us-west-2 s3 sync dist s3://tinycrit.com #--delete
-#             #else 
-#             #  aws --region us-west-2 s3 sync dist s3://dev.tinycrit.com --delete
-#             #fi
+      - run: 
+          name: Deploy to S3
+          command: |
+            #if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              aws --region us-west-2 s3 sync build s3://tinycrit.com #--delete
+            #else 
+            #  aws --region us-west-2 s3 sync dist s3://dev.tinycrit.com --delete
+            #fi
 
 # workflows:
 #   version: 2
