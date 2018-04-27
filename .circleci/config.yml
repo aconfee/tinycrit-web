@@ -78,17 +78,17 @@ jobs:
             #  aws --region us-west-2 s3 sync dist s3://dev.tinycrit.com --delete
             #fi
 
-  workflows:
-    version: 2
+workflows:
+  version: 2
 
-    build_and_deploy:
-      jobs:
-        - build
-        - deploy:
-            requires:
-              - build
-            filters:
-              branches:
-                only:
-                  - master
-                  #- develop
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                #- develop
