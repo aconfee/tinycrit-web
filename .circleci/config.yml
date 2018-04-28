@@ -67,11 +67,11 @@ jobs:
       - run: 
           name: Deploy to S3
           command: |
-            #if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              aws --region us-west-2 s3 sync build s3://tinycrit.com #--delete
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              aws --region us-west-2 s3 sync build s3://tinycrit.com --delete
             #else 
             #  aws --region us-west-2 s3 sync dist s3://dev.tinycrit.com --delete
-            #fi
+            fi
 
 workflows:
   version: 2
