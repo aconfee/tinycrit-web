@@ -19,6 +19,7 @@ Assuming you're starting from scratch, here's how to set everything up for devel
 ### Environment and Workflow
 * `npm start` to start running on port 3000.
 * `npm test` to run all unit tests.
+* `npm run storybook` will run Storybook on port 9009 https://storybook.js.org/ for developing individual components.
 * .vscode/launch.json included with VS Code defaults.
 
 ### Git branching
