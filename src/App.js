@@ -1,35 +1,35 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import { API_ROOT } from './appsettings.js';
 import './enzymeSetup.js';
 
-class App extends Component {
+import DummyQuery from './components/Dummy/dummy.query.js';
 
-  componentWillMount = () => {
-    axios.get(API_ROOT + '/dummy')
-      .then(response => {
-        console.log('Got response:', response.data.message);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
+const client = new ApolloClient({
+  uri: API_ROOT + '/graphql'
+});
+
+class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Rehacked</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to Rehacked</h1>
+          </header>
+          <p className="App-intro">
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
+          <DummyQuery />
+        </div>
+      </ApolloProvider>
     );
   }
-}
+};
 
 export default App;
