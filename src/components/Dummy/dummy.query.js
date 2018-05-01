@@ -18,7 +18,7 @@ class DummyQuery extends Component {
                     if(loading) return (<p>Loading...</p>)
                     if(error) return (<p>Error :( </p>)
                         
-                    return (<Dummy dummy={data.dummy} />);
+                    return (<Dummy loading={loading} error={error} dummy={data.dummy} />);
                 }}
             </Query>
         )}
