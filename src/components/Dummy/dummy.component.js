@@ -1,9 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import './dummy.component.css';
+import '../../enzymeSetup.js';
 
-function Dummy() {
-    return (<div className="dummy"></div>);
+class Dummy extends Component {
+    render(){     
+        if(!this.props.dummy) return (<p>No data.</p>);
+        const { message } = this.props.dummy;
+
+        if(!message) return (<p>No message.</p>);
+
+        return (<p>{ message }</p>)
+    };
 };
 
 export default Dummy;
