@@ -9,7 +9,7 @@ class Dummy extends Component {
 
         if(!message) return (<p>No message.</p>);
 
-        return (<p>{ message }</p>)
+        return (<p className="dummy">{ message }</p>)
     };
 };
 
