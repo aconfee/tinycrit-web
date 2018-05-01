@@ -7,7 +7,6 @@ import { API_ROOT } from './appsettings.js';
 import './enzymeSetup.js';
 
 import DummyQuery from './components/Dummy/dummy.query.js';
-import Dummy from './components/Dummy/dummy.component.js';
 
 const client = new ApolloClient({
   uri: API_ROOT + '/graphql'
