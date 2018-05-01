@@ -70,7 +70,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               aws --region us-west-2 s3 sync build s3://tinycrit.com --delete
             elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-              aws --region us-west-2 s3 sync dist s3://staging.tinycrit.com --delete
+              aws --region us-west-2 s3 sync build s3://staging.tinycrit.com --delete
             fi
 
 workflows:
