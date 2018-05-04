@@ -7,6 +7,8 @@ import { API_ROOT } from './appsettings.js';
 import './enzymeSetup.js';
 
 import DummyQuery from './components/Dummy/dummy.query.js';
+import { MuiThemeProvider } from 'material-ui/styles';
+import { Chip } from 'material-ui';
 
 const client = new ApolloClient({
   uri: API_ROOT + '/graphql'
@@ -26,6 +28,9 @@ class App extends Component {
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
           <DummyQuery />
+          <MuiThemeProvider>
+            <Chip>Text Chip</Chip>
+          </MuiThemeProvider>
         </div>
       </ApolloProvider>
     );
